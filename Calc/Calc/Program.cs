@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Calc
 {
@@ -44,7 +45,8 @@ namespace Calc
             }
 
             var formula = file.FirstOrDefault();
-            var inputFormula = formula.ToCharArray();
+            //var inputFormula = formula.ToCharArray();
+            var inputFormula = Regex.Matches(formula, @"([a-z0-9.])+|(\W)");
 
 
             foreach (var item in inputFormula)
